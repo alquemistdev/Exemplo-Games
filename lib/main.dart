@@ -11,9 +11,14 @@ class MeuListGame extends StatelessWidget {
   }
 }
 
-class MinhaPagina extends StatelessWidget {
+class MinhaPagina extends StatefulWidget {
   MinhaPagina({super.key});
 
+  @override
+  State<MinhaPagina> createState() => _MinhaPaginaState();
+}
+
+class _MinhaPaginaState extends State<MinhaPagina> {
   List<String> categorias = [
     'Ação',
     'Indie',
@@ -25,6 +30,45 @@ class MinhaPagina extends StatelessWidget {
     'Arcade',
     'Simulação',
     'Casual'
+  ];
+
+  List<Map<String, String>> jogos = [
+    {
+      'Nome': 'Jogo 01',
+      'Categoria': 'Ação',
+    },
+    {
+      'Nome': 'Jogo 02',
+      'Categoria': 'Estrategia',
+    },
+    {
+      'Nome': 'Jogo 03',
+      'Categoria': 'Ação',
+    },
+    {
+      'Nome': 'Jogo 04',
+      'Categoria': 'AAA',
+    },
+    {
+      'Nome': 'Jogo 05',
+      'Categoria': 'Arcade',
+    },
+    {
+      'Nome': 'Jogo 06',
+      'Categoria': 'Casual',
+    },
+    {
+      'Nome': 'Jogo 06',
+      'Categoria': 'Casual',
+    },
+    {
+      'Nome': 'Jogo 06',
+      'Categoria': 'Casual',
+    },
+    {
+      'Nome': 'Jogo 06',
+      'Categoria': 'Casual',
+    },
   ];
 
   List<Widget> categoriasForma() {
@@ -54,6 +98,56 @@ class MinhaPagina extends StatelessWidget {
           ),
         ),
       );
+    }
+    return forma;
+  }
+
+  List<Widget> jogosForma() {
+    List<Widget> forma = [];
+    for (Map j in jogos) {
+      forma.add(Padding(
+        padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+        child: Container(
+          width: double.infinity,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(224, 224, 224, 0.589),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 70,
+                  height: 70,
+                  child: Image.asset(
+                    'assets/images/Perfil.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        j['Nome'],
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        j['Categoria'],
+                        style: TextStyle(fontSize: 12),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ));
     }
     return forma;
   }
@@ -102,7 +196,7 @@ class MinhaPagina extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: 600,
+              height: 724,
               decoration: const BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -137,10 +231,17 @@ class MinhaPagina extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     )),
-                SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    children: [],
+                Container(
+                  height: 520,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: jogosForma(),
+                      ),
+                    ),
                   ),
                 )
               ]),
