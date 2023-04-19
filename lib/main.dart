@@ -80,13 +80,14 @@ class _MinhaPaginaState extends State<MinhaPagina> {
           child: Column(
             children: [
               SizedBox(
-                width: 70,
-                height: 70,
-                child: Image.asset(
-                  'assets/images/Perfil.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
+                  width: 70,
+                  height: 70,
+                  child: ClipOval(
+                    child: Image.asset(
+                      'assets/images/pasta.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                  )),
               SizedBox(
                 height: 5,
               ),
@@ -117,15 +118,20 @@ class _MinhaPaginaState extends State<MinhaPagina> {
           child: Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  width: 70,
-                  height: 70,
-                  child: Image.asset(
-                    'assets/images/Perfil.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                Container(
+                    width: 70,
+                    height: 70,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        'assets/images/arcade.jpg',
+                        fit: BoxFit.fill,
+                      ),
+                    )),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
@@ -139,9 +145,39 @@ class _MinhaPaginaState extends State<MinhaPagina> {
                       Text(
                         j['Categoria'],
                         style: TextStyle(fontSize: 12),
-                      )
+                      ),
+                      SizedBox(
+                        width: 85,
+                        height: 20,
+                        child: Image.asset(
+                          'assets/images/Estrelas.png',
+                          fit: BoxFit.fill,
+                        ),
+                      ),
                     ],
                   ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 15.0),
+                      child: Container(
+                        width: 80,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: Colors.yellow,
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                        ),
+                        child: Text(
+                          'Ver mais',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),
@@ -181,16 +217,17 @@ class _MinhaPaginaState extends State<MinhaPagina> {
                     ],
                   ),
                   Container(
-                    width: 100,
-                    height: 100,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: Image.asset(
-                      'assets/images/Perfil.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                      width: 100,
+                      height: 100,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/images/Perfil.png',
+                          fit: BoxFit.cover,
+                        ),
+                      )),
                 ],
               ),
             ),
